@@ -219,5 +219,28 @@ div.fadeIn{
     transform: translateY(0px);
   }
 }
-
 /* computer animation */
+
+@media screen and (min-width: 1600px){
+  
+  .hands img{
+    width: 30%;
+  }
+
+  .player-score, .computer-score{
+    background-color: var(--green);
+    width: 200px;
+    border-radius: 10px;
+    padding: 1em ;
+    text-align: center;
+  }
+
+  .options{
+    padding-top: 10rem;
+  }
+
+  .options button{
+    width: 20%;
+    padding: 1em 3em;
+  }
+}
