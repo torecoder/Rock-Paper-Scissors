@@ -97,7 +97,12 @@ body {
 
 .winner{
   text-align: center;
-  font-size: 2em;
+  font-size: 2rem;
+}
+
+.round{
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 .hands, .options{

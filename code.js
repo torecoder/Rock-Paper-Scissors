@@ -1,6 +1,7 @@
 const game = () => {
   let pScore = 0;
   let cScore = 0;
+  let roundNumber = 1;
 
   //start the game
   const starGame = () => {
@@ -34,6 +35,9 @@ const game = () => {
         //computer choice
         const computerNumber = Math.floor(Math.random() * 3);
         const computerChoice = computerOptions[computerNumber];
+        //wait winner
+        const winner = document.querySelector(".winner");
+        winner.textContent = "...";
         setTimeout(() => {
           //here is where we call compareHands
           compareHands(this.textContent, computerChoice);
@@ -41,7 +45,10 @@ const game = () => {
           playerHand.src = `./images/${this.textContent}.png`;
           computerHand.src = `./images/${computerChoice}.png`;
         }, 2000);
-
+        //round update
+        const roundMatch = document.querySelector(".round span");
+        roundMatch.textContent = roundNumber;
+        // hands animations
         playerHand.style.animation = "shakePlayer 2s ease";
         computerHand.style.animation = "shakeComputer 2s ease";
       });
@@ -58,20 +65,24 @@ const game = () => {
   const compareHands = (playerChoice, computerChoice) => {
     //update text
     const winner = document.querySelector(".winner");
+    const round = document.querySelector(".round");
     //checking for a tie
     if (playerChoice == computerChoice) {
       winner.textContent = "It is a tie";
+      roundNumber++;
       return;
     }
     //checking for a rock
     if (playerChoice === "rock") {
       if (computerChoice === "scissors") {
         winner.textContent = "Player win";
+        roundNumber++;
         pScore++;
         updateScore();
         return;
       } else {
         winner.textContent = `Computer win`;
+        roundNumber++;
         cScore++;
         updateScore();
         return;
@@ -81,11 +92,13 @@ const game = () => {
     if (playerChoice === "paper") {
       if (computerChoice === "scissors") {
         winner.textContent = `Computer win`;
+        roundNumber++;
         cScore++;
         updateScore();
         return;
       } else {
         winner.textContent = `Player win`;
+        roundNumber++;
         pScore++;
         updateScore();
         return;
@@ -95,11 +108,13 @@ const game = () => {
     if (playerChoice === "scissors") {
       if (computerChoice === "rock") {
         winner.textContent = `Computer win`;
+        roundNumber++;
         cScore++;
         updateScore();
         return;
       } else {
         winner.textContent = `Player win`;
+        roundNumber++;
         pScore++;
         updateScore();
         return;
